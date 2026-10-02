@@ -1,0 +1,113 @@
+.ajustes-pagina h1 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.ajustes-subtitulo {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.ajustes-error {
+  background-color: #7f1d1d;
+  color: #fecaca;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.ajustes-tarjeta {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 480px;
+}
+
+.ajustes-tarjeta h2 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+}
+
+.ajustes-descripcion {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  margin-bottom: 1.3rem;
+  line-height: 1.5;
+}
+
+.ajustes-cargando {
+  color: #9ca3af;
+}
+
+.ajustes-vinculado {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.ajustes-badge-ok {
+  background-color: #14532d;
+  color: #bbf7d0;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ajustes-boton-primario {
+  background-color: #22d3ee;
+  color: #0a0e17;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ajustes-boton-secundario {
+  background: none;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.ajustes-boton-primario:disabled,
+.ajustes-boton-secundario:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ajustes-codigo-caja {
+  background-color: #0a0e17;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.ajustes-codigo-caja p {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.ajustes-codigo {
+  color: #22d3ee;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin: 0.5rem 0 !important;
+}
+
+.ajustes-codigo-nota {
+  font-size: 0.78rem;
+  margin-bottom: 1rem !important;
+}

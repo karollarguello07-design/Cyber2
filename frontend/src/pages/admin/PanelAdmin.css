@@ -1,0 +1,102 @@
+.panel-admin h1 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.panel-admin-cargando {
+  color: #9ca3af;
+  padding: 1rem;
+}
+
+.panel-admin-error {
+  background-color: #7f1d1d;
+  color: #fecaca;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.panel-admin-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.resumen-tarjeta {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.1rem;
+  text-align: center;
+}
+
+.resumen-etiqueta {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.resumen-valor {
+  color: #22d3ee;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.panel-admin-seccion {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel-admin-seccion h2 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-tabla th {
+  text-align: left;
+  color: #9ca3af;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.admin-tabla td {
+  color: #d1d5db;
+  font-size: 0.85rem;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.rol-chip {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.rol-admin {
+  background-color: #4c1d95;
+  color: #ddd6fe;
+}
+
+.rol-profesor {
+  background-color: #164e63;
+  color: #a5f3fc;
+}
+
+.rol-estudiante {
+  background-color: #14532d;
+  color: #bbf7d0;
+}

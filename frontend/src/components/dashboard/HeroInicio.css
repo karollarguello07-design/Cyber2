@@ -1,0 +1,125 @@
+.hero {
+  display: flex;
+  gap: 2rem;
+  background: linear-gradient(135deg, #0d1b2a 0%, #0a0e17 100%);
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-texto {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #0e2a30;
+  color: #22d3ee;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.hero-badge-punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+.hero-titulo {
+  font-size: 2.1rem;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.hero-acento {
+  color: #22d3ee;
+}
+
+.hero-descripcion {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-botones {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.hero-boton-primario {
+  background-color: #22d3ee;
+  color: #0a0e17;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-boton-secundario {
+  background: none;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+}
+
+.hero-estadisticas {
+  display: flex;
+  gap: 2rem;
+}
+
+.hero-estadistica {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-estadistica-valor {
+  color: #22d3ee;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.hero-estadistica-etiqueta {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.hero-terminal {
+  background-color: #0a0e17;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+  min-width: 260px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  align-self: center;
+}
+
+.hero-terminal-linea {
+  margin-bottom: 0.5rem;
+}
+
+.hero-terminal-alerta {
+  color: #f87171;
+  margin-bottom: 0.5rem;
+}
+
+.hero-terminal-ok {
+  color: #22c55e;
+  margin-top: 0.5rem;
+}

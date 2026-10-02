@@ -1,0 +1,137 @@
+.modulos-seccion {
+  margin-bottom: 2rem;
+  min-width: 0;
+  max-width: 100%;
+}
+.modulos-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.modulos-pestañas {
+  display: flex;
+  gap: 0.5rem;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 999px;
+  padding: 0.25rem;
+}
+
+.modulos-pestaña {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.modulos-pestaña.activa {
+  background-color: #22d3ee;
+  color: #0a0e17;
+}
+
+
+.modulos-encabezado h2 {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.modulos-ver-todos {
+  color: #22d3ee;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.modulos-carrusel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.8rem;
+  width: 100%;
+}
+.modulos-carrusel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.modulos-carrusel::-webkit-scrollbar-thumb {
+  background-color: #1f2937;
+  border-radius: 999px;
+}
+
+.modulos-carrusel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tarjeta-modulo {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.modulos-cargando {
+  color: #9ca3af;
+}
+
+.tarjeta-modulo-icono {
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta-modulo-etiqueta {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  width: fit-content;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta-modulo-titulo {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta-modulo-descripcion {
+  color: #9ca3af;
+  font-size: 0.82rem;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-modulo-barra-fondo {
+  background-color: #1f2937;
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.tarjeta-modulo-barra-relleno {
+  background-color: #22d3ee;
+  height: 100%;
+}
+
+.tarjeta-modulo-progreso-texto {
+  color: #9ca3af;
+  font-size: 0.78rem;
+}

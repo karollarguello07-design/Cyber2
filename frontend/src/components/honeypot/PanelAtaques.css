@@ -1,0 +1,152 @@
+.panel-ataques {
+  margin-bottom: 2rem;
+}
+
+.panel-ataques-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.panel-ataques-encabezado h2 {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.panel-ataques-ver-log {
+  color: #22d3ee;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.panel-ataques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.panel-ataques-tarjeta {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.panel-ataques-etiqueta {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.8rem;
+}
+
+.panel-ataques-numero-grande {
+  color: #f87171;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.panel-ataques-variacion {
+  color: #f87171;
+  font-size: 0.8rem;
+}
+
+.barra-ranking {
+  margin-bottom: 0.7rem;
+}
+
+.barra-ranking-info {
+  display: flex;
+  justify-content: space-between;
+  color: #d1d5db;
+  font-size: 0.82rem;
+  margin-bottom: 0.25rem;
+}
+
+.barra-ranking-fondo {
+  background-color: #1f2937;
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.barra-ranking-relleno {
+  height: 100%;
+}
+
+.panel-ataques-grafico {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 60px;
+}
+
+.panel-ataques-barra-hora {
+  flex: 1;
+  background-color: #22d3ee;
+  opacity: 0.7;
+  height: 40%;
+  border-radius: 3px 3px 0 0;
+}
+.panel-ataques-cargando,
+.panel-ataques-vacio {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.panel-ataques-vacio code {
+  background-color: #1f2937;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  color: #22d3ee;
+  font-size: 0.85rem;
+}
+
+.panel-ataques-sin-datos {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+.tabla-ultimos-intentos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+.tabla-ultimos-intentos th,
+.tabla-ultimos-intentos td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+.tabla-ultimos-intentos th {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.panel-ataques-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.panel-ataques-boton-actualizar {
+  background-color: #22d3ee;
+  color: #0f172a;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.panel-ataques-boton-actualizar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.panel-ataques-mensaje {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}

@@ -1,0 +1,147 @@
+.mi-progreso-pagina h1 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.mi-progreso-subtitulo {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.mi-progreso-cargando,
+.mi-progreso-vacio {
+  color: #9ca3af;
+}
+
+.mi-progreso-error {
+  background-color: #7f1d1d;
+  color: #fecaca;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+}
+
+.mi-progreso-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.estadistica-tarjeta {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.estadistica-etiqueta {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.estadistica-valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.mi-progreso-siguiente-nivel {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.siguiente-nivel-info {
+  display: flex;
+  justify-content: space-between;
+  color: #d1d5db;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.siguiente-nivel-barra-fondo {
+  background-color: #1f2937;
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.siguiente-nivel-barra-relleno {
+  background-color: #22d3ee;
+  height: 100%;
+}
+
+.mi-progreso-insignias,
+.mi-progreso-historial {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.mi-progreso-insignias h2,
+.mi-progreso-historial h2 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.insignias-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.insignia-chip {
+  background-color: #0e2a30;
+  color: #22d3ee;
+  border: 1px solid #22d3ee;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.insignia-fecha {
+  color: #6b7280;
+  font-size: 0.72rem;
+}
+
+.historial-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.historial-tabla th {
+  text-align: left;
+  color: #9ca3af;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.historial-tabla td {
+  color: #d1d5db;
+  font-size: 0.85rem;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.resultado-ok {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.resultado-error {
+  color: #f87171;
+  font-weight: 600;
+}

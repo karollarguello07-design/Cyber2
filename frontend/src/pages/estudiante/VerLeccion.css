@@ -1,0 +1,72 @@
+.ver-leccion-cargando {
+  color: #9ca3af;
+}
+
+.ver-leccion-error {
+  background-color: #7f1d1d;
+  color: #fecaca;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+}
+
+.ver-leccion-volver {
+  background: none;
+  border: none;
+  color: #22d3ee;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+
+.ver-leccion-pagina h1 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.ver-leccion-contenido {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #d1d5db;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  white-space: pre-line;
+  margin-bottom: 1.5rem;
+}
+
+.ver-leccion-boton {
+  background-color: #22d3ee;
+  color: #0a0e17;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ver-leccion-boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ver-leccion-badge-ok {
+  background-color: #14532d;
+  color: #bbf7d0;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+.ver-leccion-dato-curioso {
+  background: linear-gradient(135deg, #422006 0%, #1f2937 100%);
+  border: 1px solid #fbbf24;
+  border-radius: 10px;
+  padding: 1rem 1.3rem;
+  color: #fde68a;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}

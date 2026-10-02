@@ -1,0 +1,51 @@
+from django.db.models import Count
+from django.utils import timezone
+from datetime import timedelta
+from rest_framework import generics, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import AtaqueHoneypot
+from .serializers import AtaqueHoneypotSerializer
+from django.core.management import call_command
+
+
+class AtaquesListaView(generics.ListAPIView):
+    serializer_class = AtaqueHoneypotSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = AtaqueHoneypot.objects.all() .order_by('-timestamp_evento')[:5] 
+
+
+class EstadisticasAtaquesView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        hoy = timezone.localtime(timezone.now()).date()
+        ataques_hoy = AtaqueHoneypot.objects.filter(timestamp_evento__date=hoy).count()
+
+        usuarios_top = (
+            AtaqueHoneypot.objects.exclude(usuario_probado='')
+            .values('usuario_probado')
+            .annotate(total=Count('id'))
+            .order_by('-total')[:5]
+        )
+
+        contrasenas_top = (
+            AtaqueHoneypot.objects.exclude(contrasena_probada='')
+            .values('contrasena_probada')
+            .annotate(total=Count('id'))
+            .order_by('-total')[:5]
+        )
+
+        return Response({
+            'ataques_hoy': ataques_hoy,
+            'total_ataques': AtaqueHoneypot.objects.count(),
+            'usuarios_top': list(usuarios_top),
+            'contrasenas_top': list(contrasenas_top),
+        })
+
+class ActualizarAtaquesView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        call_command('ingerir_cowrie')
+        return Response({'mensaje': 'Ataques actualizados correctamente.'})

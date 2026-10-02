@@ -1,0 +1,94 @@
+.cursos-pagina h1 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.cursos-subtitulo {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.cursos-alerta {
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.cursos-alerta-error {
+  background-color: #7f1d1d;
+  color: #fecaca;
+}
+
+.cursos-alerta-exito {
+  background-color: #14532d;
+  color: #bbf7d0;
+}
+
+.cursos-cargando {
+  color: #9ca3af;
+}
+
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.curso-tarjeta {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.curso-tarjeta h3 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.curso-descripcion {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+  flex: 1;
+}
+
+.curso-profesor {
+  color: #d1d5db;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.curso-cupo-ok {
+  color: #4ade80;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.curso-cupo-lleno {
+  color: #f87171;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.curso-boton {
+  background-color: #22d3ee;
+  color: #0a0e17;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.curso-boton:disabled {
+  background-color: #1f2937;
+  color: #6b7280;
+  cursor: not-allowed;
+}
