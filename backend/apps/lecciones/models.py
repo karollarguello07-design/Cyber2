@@ -49,3 +49,23 @@ class LeccionCompletada(models.Model):
 
     def __str__(self):
         return f'{self.estudiante.username} completó {self.leccion.titulo}'
+
+
+class TarjetaEstudio(models.Model):
+    modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE, related_name='tarjetas')
+    orden = models.PositiveIntegerField(default=1)
+    icono = models.CharField(max_length=10, default='🃏')
+    titulo = models.CharField(max_length=100)
+    analogia = models.CharField(max_length=255)
+    peligro = models.PositiveSmallIntegerField(default=1, help_text='1 = bajo, 2 = medio, 3 = alto')
+    que_es = models.TextField()
+    como_se_ve = models.TextField()
+    como_defenderse = models.TextField()
+    solo_teoria = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['orden']
+        unique_together = ('modulo', 'orden')
+
+    def __str__(self):
+        return f'{self.modulo.nombre} — {self.titulo}'

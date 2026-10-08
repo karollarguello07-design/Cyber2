@@ -13,3 +13,12 @@ class ModuloAdmin(admin.ModelAdmin):
     list_filter = ('nivel',)
 
 admin.site.register(LeccionCompletada)
+
+
+from .models import TarjetaEstudio
+
+
+@admin.register(TarjetaEstudio)
+class TarjetaEstudioAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'modulo', 'orden', 'peligro', 'solo_teoria')
+    list_filter = ('modulo', 'solo_teoria')
