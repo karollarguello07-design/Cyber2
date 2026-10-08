@@ -91,7 +91,11 @@ function ModulosAprendizaje() {
                   </span>
                 </div>
               ) : (
-                <span className="tarjeta-modulo-progreso-texto">Por comenzar</span>
+                <span className="tarjeta-modulo-progreso-texto">
+                  {modulo.tarjetas && modulo.tarjetas.length > 0
+                    ? `🃏 ${modulo.tarjetas.length} tarjetas de estudio`
+                    : 'Por comenzar'}
+                </span>
               )}
             </div>
           ))}
