@@ -13,8 +13,12 @@ class CursoListaCrearView(generics.ListCreateAPIView):
 
     def get_permissions(self):
         if self.request.method == 'POST':
-            return [EsAdministrador()]
+            return [EsProfesor()]
         return [permissions.IsAuthenticated()]
+
+    def perform_create(self, serializer):
+        # El curso queda asignado automáticamente al profesor que lo crea
+        serializer.save(profesor=self.request.user)
 
 
 class CursoDetalleView(generics.RetrieveUpdateDestroyAPIView):

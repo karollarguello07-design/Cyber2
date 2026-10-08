@@ -15,7 +15,9 @@ import Ajustes from './pages/ajustes/Ajustes';
 import DetalleModulo from './pages/estudiante/DetalleModulo';
 import VerLeccion from './pages/estudiante/VerLeccion';
 import AtaquesReales from './pages/estudiante/AtaquesReales';
-
+import GestionUsuarios from './pages/admin/GestionUsuarios';
+import GestionContenido from './pages/admin/GestionContenido';
+import Reportes from './pages/admin/Reportes';
 
 function App() {
   return (
@@ -73,6 +75,31 @@ function App() {
             }
           />
 	<Route
+  path="/admin/usuarios"
+  element={
+    <RutaPorRol rolesPermitidos={['admin']}>
+      <GestionUsuarios />
+    </RutaPorRol>
+  }
+/>
+<Route
+  path="/admin/contenido"
+  element={
+    <RutaPorRol rolesPermitidos={['admin']}>
+      <GestionContenido />
+    </RutaPorRol>
+  }
+/>
+<Route
+  path="/admin/reportes"
+  element={
+    <RutaPorRol rolesPermitidos={['admin']}>
+      <Reportes />
+    </RutaPorRol>
+  }
+/>
+
+          <Route
             path="/ajustes"
             element={
               <RutaProtegida>

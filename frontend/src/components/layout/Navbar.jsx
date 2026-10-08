@@ -1,6 +1,6 @@
 import { useAuth } from '../../context/AuthContext';
 
-function Navbar() {
+function Navbar({ tema, alternarTema }) {
   const { usuario, logout } = useAuth();
 
   const inicialUsuario = usuario?.username?.charAt(0).toUpperCase() || '?';
@@ -17,6 +17,13 @@ function Navbar() {
       </nav>
 
       <div className="navbar-usuario">
+        <button
+          className="navbar-toggle-tema"
+          onClick={alternarTema}
+          title={tema === 'oscuro' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+        >
+          {tema === 'oscuro' ? '☀️' : '🌙'}
+        </button>
         <div className="navbar-avatar" title={usuario?.username}>
           {inicialUsuario}
         </div>

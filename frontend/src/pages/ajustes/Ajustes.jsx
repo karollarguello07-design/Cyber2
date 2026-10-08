@@ -59,7 +59,7 @@ function Ajustes() {
   return (
     <Layout>
       <div className="ajustes-pagina">
-        <h1>⚙️ Ajustes</h1>
+        <h1>🔔 Notificaciones</h1>
         <p className="ajustes-subtitulo">Configura tus notificaciones</p>
 
         {error && <div className="ajustes-error">{error}</div>}

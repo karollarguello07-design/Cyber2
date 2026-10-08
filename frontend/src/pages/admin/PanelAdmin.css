@@ -100,3 +100,47 @@
   background-color: #14532d;
   color: #bbf7d0;
 }
+
+.panel-admin-accesos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.tarjeta-acceso {
+  background-color: rgba(34, 211, 238, 0.06);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 12px;
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.tarjeta-acceso:hover {
+  background-color: rgba(34, 211, 238, 0.14);
+}
+.tarjeta-acceso-icono {
+  font-size: 2rem;
+}
+.tarjeta-acceso-texto {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+.boton-panel-django {
+  background-color: rgba(250, 204, 21, 0.1);
+  border-color: rgba(250, 204, 21, 0.4);
+  color: #facc15;
+}
+.boton-gestion {
+  background-color: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: #22d3ee !important;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
