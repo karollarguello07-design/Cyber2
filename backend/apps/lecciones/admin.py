@@ -22,3 +22,18 @@ from .models import TarjetaEstudio
 class TarjetaEstudioAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'modulo', 'orden', 'peligro', 'solo_teoria')
     list_filter = ('modulo', 'solo_teoria')
+
+
+from .models import QuizPregunta, QuizOpcion
+
+
+class QuizOpcionInline(admin.TabularInline):
+    model = QuizOpcion
+    extra = 0
+
+
+@admin.register(QuizPregunta)
+class QuizPreguntaAdmin(admin.ModelAdmin):
+    list_display = ('enunciado', 'modulo', 'orden', 'xp')
+    list_filter = ('modulo',)
+    inlines = [QuizOpcionInline]

@@ -18,6 +18,7 @@ import AtaquesReales from './pages/estudiante/AtaquesReales';
 import GestionUsuarios from './pages/admin/GestionUsuarios';
 import GestionContenido from './pages/admin/GestionContenido';
 import Reportes from './pages/admin/Reportes';
+import Quiz from './pages/estudiante/Quiz';
 
 function App() {
   return (
@@ -137,6 +138,14 @@ function App() {
             element={
               <RutaProtegida>
                 <AtaquesReales />
+              </RutaProtegida>
+            }
+          />
+          <Route
+            path="/quiz"
+            element={
+              <RutaProtegida>
+                <Quiz />
               </RutaProtegida>
             }
           />

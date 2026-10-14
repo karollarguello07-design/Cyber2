@@ -69,3 +69,38 @@ class TarjetaEstudio(models.Model):
 
     def __str__(self):
         return f'{self.modulo.nombre} — {self.titulo}'
+
+
+class QuizPregunta(models.Model):
+    modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE, related_name='preguntas_quiz')
+    orden = models.PositiveIntegerField(default=1)
+    enunciado = models.TextField()
+    explicacion = models.TextField(blank=True, help_text='Se muestra cuando el estudiante acierta.')
+    xp = models.PositiveIntegerField(default=5)
+
+    class Meta:
+        ordering = ['orden']
+        unique_together = ('modulo', 'orden')
+
+    def __str__(self):
+        return f'{self.modulo.nombre} — {self.enunciado[:50]}'
+
+
+class QuizOpcion(models.Model):
+    pregunta = models.ForeignKey(QuizPregunta, on_delete=models.CASCADE, related_name='opciones')
+    texto = models.CharField(max_length=255)
+    es_correcta = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.texto
+
+
+class QuizRespuesta(models.Model):
+    estudiante = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='respuestas_quiz',
+    )
+    pregunta = models.ForeignKey(QuizPregunta, on_delete=models.CASCADE, related_name='respuestas')
+    opcion = models.ForeignKey(QuizOpcion, on_delete=models.CASCADE)
+    es_correcta = models.BooleanField()
+    xp_otorgado = models.PositiveIntegerField(default=0)
+    fecha = models.DateTimeField(auto_now_add=True)
