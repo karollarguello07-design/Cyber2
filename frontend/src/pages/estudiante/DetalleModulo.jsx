@@ -1,19 +1,28 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Layout from '../../components/layout/Layout';
+import TarjetasEstudio from '../../components/dashboard/TarjetasEstudio';
 import { obtenerModulos } from '../../services/lecciones';
 import './DetalleModulo.css';
-import phishingImg from '../../assets/ilustraciones/phishing.svg';
-import contrasenasImg from '../../assets/ilustraciones/contrasenas.svg';
-import ataquesRedImg from '../../assets/ilustraciones/ataques-red.svg';
-import proteccionDatosImg from '../../assets/ilustraciones/proteccion-datos.svg';
 
-const ilustracionesPorModulo = {
-  'Phishing e Ingeniería Social': phishingImg,
-  'Contraseñas Seguras': contrasenasImg,
-  'Ataques de Red': ataquesRedImg,
-  'Protección de Datos': proteccionDatosImg,
+const ilustraciones = import.meta.glob('../../assets/ilustraciones/*.svg', {
+  eager: true,
+  import: 'default',
+});
+
+const archivoPorModulo = {
+  'Phishing e Ingeniería Social': 'phishing.svg',
+  'Contraseñas Seguras': 'contrasenas.svg',
+  'Ataques de Red': 'ataques-red.svg',
+  'Protección de Datos': 'proteccion-datos.svg',
 };
+
+function buscarIlustracion(nombreModulo) {
+  const archivo = archivoPorModulo[nombreModulo];
+  if (!archivo) return null;
+  const ruta = Object.keys(ilustraciones).find((r) => r.endsWith('/' + archivo));
+  return ruta ? ilustraciones[ruta] : null;
+}
 
 function DetalleModulo() {
   const { moduloId } = useParams();
@@ -52,10 +61,14 @@ function DetalleModulo() {
   if (error || !modulo) {
     return (
       <Layout>
-        <div className="detalle-modulo-error">{error}</div>
+        <div className="detalle-modulo-error">{error || 'Módulo no encontrado.'}</div>
       </Layout>
     );
   }
+
+  const tieneTarjetas = modulo.tarjetas && modulo.tarjetas.length > 0;
+  const tieneLecciones = modulo.lecciones && modulo.lecciones.length > 0;
+  const ilustracion = buscarIlustracion(modulo.nombre);
 
   return (
     <Layout>
@@ -63,30 +76,29 @@ function DetalleModulo() {
         <button className="detalle-modulo-volver" onClick={() => navigate('/dashboard')}>
           ← Volver al inicio
         </button>
-	
+
         <div className="detalle-modulo-encabezado">
-          <img
-            src={ilustracionesPorModulo[modulo.nombre]}
-            alt={modulo.nombre}
-            className="detalle-modulo-ilustracion"
-          />
+          {ilustracion ? (
+            <img src={ilustracion} alt={modulo.nombre} className="detalle-modulo-ilustracion" />
+          ) : (
+            <div className="detalle-modulo-icono-emoji">{modulo.icono}</div>
+          )}
           <div>
             <h1>{modulo.nombre}</h1>
             <p className="detalle-modulo-descripcion">{modulo.descripcion}</p>
-            <p className="detalle-modulo-progreso">
-              Progreso: {modulo.progreso_porcentaje}% completado
-            </p>
+            {tieneLecciones && (
+              <p className="detalle-modulo-progreso">
+                Progreso: {modulo.progreso_porcentaje}% completado
+              </p>
+            )}
           </div>
-        </div>	
+        </div>
 
-        <p className="detalle-modulo-descripcion">{modulo.descripcion}</p>
-        <p className="detalle-modulo-progreso">
-          Progreso: {modulo.progreso_porcentaje}% completado
-        </p>
+        {tieneTarjetas && (
+          <TarjetasEstudio tarjetas={modulo.tarjetas} moduloId={modulo.id} nivel={modulo.nivel} />
+        )}
 
-        {modulo.lecciones.length === 0 ? (
-          <p className="detalle-modulo-vacio">Aún no hay lecciones cargadas para este módulo.</p>
-        ) : (
+        {tieneLecciones && (
           <div className="lecciones-lista">
             {modulo.lecciones.map((leccion) => (
               <Link
@@ -103,6 +115,10 @@ function DetalleModulo() {
               </Link>
             ))}
           </div>
+        )}
+
+        {!tieneTarjetas && !tieneLecciones && (
+          <p className="detalle-modulo-vacio">Aún no hay contenido cargado para este módulo.</p>
         )}
       </div>
     </Layout>

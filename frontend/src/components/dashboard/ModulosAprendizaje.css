@@ -33,7 +33,7 @@
 }
 
 .modulos-pestaña.activa {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   color: #0a0e17;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .modulos-ver-todos {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 0.85rem;
   text-decoration: none;
 }
@@ -127,7 +127,7 @@
 }
 
 .tarjeta-modulo-barra-relleno {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   height: 100%;
 }
 

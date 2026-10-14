@@ -15,7 +15,7 @@
 }
 
 .panel-ataques-ver-log {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 0.85rem;
   text-decoration: none;
 }
@@ -42,13 +42,13 @@
 }
 
 .panel-ataques-numero-grande {
-  color: #f87171;
+  color: #ff4d5e;
   font-size: 2.2rem;
   font-weight: 700;
 }
 
 .panel-ataques-variacion {
-  color: #f87171;
+  color: #ff4d5e;
   font-size: 0.8rem;
 }
 
@@ -84,7 +84,7 @@
 
 .panel-ataques-barra-hora {
   flex: 1;
-  background-color: #22d3ee;
+  background-color: #39ff88;
   opacity: 0.7;
   height: 40%;
   border-radius: 3px 3px 0 0;
@@ -99,7 +99,7 @@
   background-color: #1f2937;
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 0.85rem;
 }
 
@@ -133,7 +133,7 @@
   gap: 12px;
 }
 .panel-ataques-boton-actualizar {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   color: #0f172a;
   border: none;
   border-radius: 8px;

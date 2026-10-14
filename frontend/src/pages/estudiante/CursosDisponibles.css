@@ -19,12 +19,12 @@
 
 .cursos-alerta-error {
   background-color: #7f1d1d;
-  color: #fecaca;
+  color: #ffc2c8;
 }
 
 .cursos-alerta-exito {
   background-color: #14532d;
-  color: #bbf7d0;
+  color: #b8ffd0;
 }
 
 .cursos-cargando {
@@ -66,19 +66,19 @@
 }
 
 .curso-cupo-ok {
-  color: #4ade80;
+  color: #5dff7a;
   font-size: 0.8rem;
   margin-bottom: 1rem;
 }
 
 .curso-cupo-lleno {
-  color: #f87171;
+  color: #ff4d5e;
   font-size: 0.8rem;
   margin-bottom: 1rem;
 }
 
 .curso-boton {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   color: #0a0e17;
   border: none;
   border-radius: 8px;

@@ -8,8 +8,9 @@ const NIVELES_PELIGRO = {
   3: { emoji: '🔴', texto: 'Alto', clase: 'peligro-alto' },
 };
 
-function TarjetasEstudio({ tarjetas, moduloId }) {
+function TarjetasEstudio({ tarjetas, moduloId, nivel }) {
   const { usuario } = useAuth();
+  const etiquetaSeVe = nivel === 'avanzado' ? '🐝 ¿Cómo lo ve Cowrie?' : '👀 ¿Cómo lo reconoces?';
   const claveAlmacen = `tarjetas_dominadas_${usuario?.username}_${moduloId}`;
 
   const [indice, setIndice] = useState(0);
@@ -90,7 +91,7 @@ function TarjetasEstudio({ tarjetas, moduloId }) {
             <h3>{tarjeta.titulo}</h3>
             <p className="tarjeta-analogia">“{tarjeta.analogia}”</p>
             <span className={`tarjeta-peligro ${peligro.clase}`}>
-              {peligro.emoji} Peligro: {peligro.texto}
+              {peligro.emoji} Riesgo: {peligro.texto}
             </span>
             <span className="tarjeta-pista">👆 Toca para ver el detalle</span>
           </div>
@@ -102,7 +103,7 @@ function TarjetasEstudio({ tarjetas, moduloId }) {
               <p>{tarjeta.que_es}</p>
             </div>
             <div className="tarjeta-bloque">
-              <strong>🐝 ¿Cómo lo ve Cowrie?</strong>
+              <strong>{etiquetaSeVe}</strong>
               <p>{tarjeta.como_se_ve}</p>
             </div>
             <div className="tarjeta-bloque tarjeta-bloque-defensa">

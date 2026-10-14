@@ -12,7 +12,7 @@
 
 .ajustes-error {
   background-color: #7f1d1d;
-  color: #fecaca;
+  color: #ffc2c8;
   border-radius: 8px;
   padding: 0.7rem 1rem;
   margin-bottom: 1rem;
@@ -52,7 +52,7 @@
 
 .ajustes-badge-ok {
   background-color: #14532d;
-  color: #bbf7d0;
+  color: #b8ffd0;
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
   font-size: 0.85rem;
@@ -60,7 +60,7 @@
 }
 
 .ajustes-boton-primario {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   color: #0a0e17;
   border: none;
   border-radius: 8px;
@@ -100,7 +100,7 @@
 }
 
 .ajustes-codigo {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.2em;

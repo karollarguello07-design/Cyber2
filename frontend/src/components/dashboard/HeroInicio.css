@@ -18,8 +18,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #0e2a30;
-  color: #22d3ee;
+  background-color: #0c2a24;
+  color: #39ff88;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.4rem 0.8rem;
@@ -31,7 +31,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #22c55e;
+  background-color: #3dff6a;
 }
 
 .hero-titulo {
@@ -42,7 +42,7 @@
 }
 
 .hero-acento {
-  color: #22d3ee;
+  color: #39ff88;
 }
 
 .hero-descripcion {
@@ -59,7 +59,7 @@
 }
 
 .hero-boton-primario {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   color: #0a0e17;
   border: none;
   border-radius: 8px;
@@ -88,7 +88,7 @@
 }
 
 .hero-estadistica-valor {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -115,11 +115,11 @@
 }
 
 .hero-terminal-alerta {
-  color: #f87171;
+  color: #ff4d5e;
   margin-bottom: 0.5rem;
 }
 
 .hero-terminal-ok {
-  color: #22c55e;
+  color: #3dff6a;
   margin-top: 0.5rem;
 }

@@ -28,7 +28,7 @@ class ModuloSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Modulo
-        fields = ('id', 'nombre', 'descripcion', 'icono', 'lecciones', 'progreso_porcentaje','tarjetas')
+        fields = ('id', 'nombre', 'descripcion', 'icono','nivel', 'lecciones', 'progreso_porcentaje','tarjetas')
 
     def get_progreso_porcentaje(self, obj):
         usuario = self.context['request'].user

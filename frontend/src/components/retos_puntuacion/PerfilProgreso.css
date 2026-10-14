@@ -16,7 +16,7 @@
 }
 
 .progreso-ver-detalle {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 0.85rem;
   text-decoration: none;
 }
@@ -62,7 +62,7 @@
 
 .progreso-circulo-relleno {
   fill: none;
-  stroke: #22d3ee;
+  stroke: #39ff88;
   stroke-width: 8;
   stroke-linecap: round;
 }
@@ -106,13 +106,13 @@
 }
 
 .progreso-tema-barra-relleno {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   height: 100%;
 }
 
 /* Logros */
 .progreso-logros-numero {
-  color: #4ade80;
+  color: #5dff7a;
   font-size: 2rem;
   font-weight: 700;
 }
@@ -142,9 +142,9 @@
 }
 
 .progreso-logro-chip.obtenido {
-  background-color: #0e2a30;
-  color: #22d3ee;
-  border-color: #22d3ee;
+  background-color: #0c2a24;
+  color: #39ff88;
+  border-color: #39ff88;
 }
 
 .progreso-logro-chip.bloqueado {
@@ -154,7 +154,7 @@
 
 /* Puntuación */
 .progreso-puntuacion-numero {
-  color: #4ade80;
+  color: #5dff7a;
   font-size: 2.2rem;
   font-weight: 700;
 }
@@ -213,12 +213,12 @@
 }
 
 .perfil-lateral-barra-relleno {
-  background-color: #22d3ee;
+  background-color: #39ff88;
   height: 100%;
 }
 
 .perfil-lateral-siguiente {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 0.75rem;
 }
 .progreso-nota {

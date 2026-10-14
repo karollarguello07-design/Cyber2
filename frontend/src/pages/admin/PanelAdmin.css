@@ -11,7 +11,7 @@
 
 .panel-admin-error {
   background-color: #7f1d1d;
-  color: #fecaca;
+  color: #ffc2c8;
   border-radius: 8px;
   padding: 0.7rem 1rem;
   margin-bottom: 1rem;
@@ -39,7 +39,7 @@
 }
 
 .resumen-valor {
-  color: #22d3ee;
+  color: #39ff88;
   font-size: 1.6rem;
   font-weight: 700;
 }
@@ -98,7 +98,7 @@
 
 .rol-estudiante {
   background-color: #14532d;
-  color: #bbf7d0;
+  color: #b8ffd0;
 }
 
 .panel-admin-accesos {
@@ -136,7 +136,7 @@
 .boton-gestion {
   background-color: rgba(34, 211, 238, 0.1);
   border: 1px solid rgba(34, 211, 238, 0.4);
-  color: #22d3ee !important;
+  color: #39ff88 !important;
   border-radius: 8px;
   padding: 10px 16px;
   font-weight: 600;
