@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './HeroInicio.css';
 
 const estadisticas = [
@@ -7,6 +8,13 @@ const estadisticas = [
 ];
 
 function HeroInicio() {
+  const navigate = useNavigate();
+
+  function irAModulos() {
+    const seccion = document.getElementById('modulos-aprendizaje');
+    if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   return (
     <section className="hero">
       <div className="hero-texto">
@@ -26,8 +34,8 @@ function HeroInicio() {
         </p>
 
         <div className="hero-botones">
-          <button className="hero-boton-primario">▶ Comenzar ahora</button>
-          <button className="hero-boton-secundario">Ver ataques en vivo →</button>
+          <button className="hero-boton-primario" onClick={irAModulos}>▶ Comenzar ahora</button>
+          <button className="hero-boton-secundario" onClick={() => navigate('/ataques')}>Ver ataques en vivo →</button>
         </div>
 
         <div className="hero-estadisticas">

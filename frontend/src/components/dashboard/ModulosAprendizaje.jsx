@@ -1,21 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { obtenerModulos } from '../../services/lecciones';
+import { obtenerQuizModulos } from '../../services/quiz';
 import './ModulosAprendizaje.css';
 
-const coloresPorIndice = ['#f87171', '#fbbf24', '#fb923c', '#4ade80', '#22d3ee', '#a78bfa'];
+const coloresPorIndice = ['#ff4d5e', '#ffd23f', '#ff9d2e', '#39ff88', '#3aa8ff', '#b388ff'];
 
 function ModulosAprendizaje() {
   const navigate = useNavigate();
   const [modulos, setModulos] = useState([]);
+  const [quizPorModulo, setQuizPorModulo] = useState({});
   const [cargando, setCargando] = useState(true);
   const [pestaña, setPestaña] = useState('basico');
 
   useEffect(() => {
     async function cargar() {
       try {
-        const datos = await obtenerModulos();
+        const [datos, quiz] = await Promise.all([
+          obtenerModulos(),
+          obtenerQuizModulos().catch(() => []),
+        ]);
         setModulos(datos);
+        setQuizPorModulo(Object.fromEntries(quiz.map((q) => [q.id, q])));
       } catch (err) {
         setModulos([]);
       } finally {
@@ -29,8 +35,12 @@ function ModulosAprendizaje() {
     pestaña === 'avanzado' ? m.nivel === 'avanzado' : m.nivel !== 'avanzado'
   );
 
+  function abrir(modulo) {
+    navigate(`/modulos/${modulo.id}`);
+  }
+
   return (
-    <section className="modulos-seccion">
+    <section className="modulos-seccion" id="modulos-aprendizaje">
       <div className="modulos-encabezado">
         <h2>📘 Módulos de aprendizaje</h2>
         <div className="modulos-pestañas">
@@ -59,46 +69,59 @@ function ModulosAprendizaje() {
         </p>
       ) : (
         <div className="modulos-carrusel">
-          {modulosFiltrados.map((modulo, indice) => (
-            <div
-              key={modulo.id}
-              className="tarjeta-modulo"
-              onClick={() => navigate(`/modulos/${modulo.id}`)}
-            >
-              <div className="tarjeta-modulo-icono">{modulo.icono}</div>
-              <span
-                className="tarjeta-modulo-etiqueta"
-                style={{
-                  color: coloresPorIndice[indice % coloresPorIndice.length],
-                  borderColor: coloresPorIndice[indice % coloresPorIndice.length],
+          {modulosFiltrados.map((modulo, indice) => {
+            const quiz = quizPorModulo[modulo.id];
+            const progreso = quiz ? quiz.porcentaje : modulo.progreso_porcentaje;
+            const cantidadTarjetas = modulo.tarjetas ? modulo.tarjetas.length : 0;
+            const color = coloresPorIndice[indice % coloresPorIndice.length];
+            const etiquetaBoton =
+              progreso >= 100 ? '✓ Completado · repasar' : progreso > 0 ? 'Continuar →' : 'Empezar →';
+
+            return (
+              <div
+                key={modulo.id}
+                className="mod-card"
+                style={{ '--acento': color }}
+                role="button"
+                tabIndex={0}
+                onClick={() => abrir(modulo)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    abrir(modulo);
+                  }
                 }}
               >
-                MÓDULO {indice + 1}
-              </span>
-              <h3 className="tarjeta-modulo-titulo">{modulo.nombre}</h3>
-              <p className="tarjeta-modulo-descripcion">{modulo.descripcion}</p>
-
-              {modulo.progreso_porcentaje > 0 ? (
-                <div className="tarjeta-modulo-progreso-contenedor">
-                  <div className="tarjeta-modulo-barra-fondo">
-                    <div
-                      className="tarjeta-modulo-barra-relleno"
-                      style={{ width: `${modulo.progreso_porcentaje}%` }}
-                    ></div>
-                  </div>
-                  <span className="tarjeta-modulo-progreso-texto">
-                    {modulo.progreso_porcentaje}% completado
-                  </span>
+                <div className="mod-card-cabecera">
+                  <span className="mod-card-numero">MÓDULO {indice + 1}</span>
+                  <span className="mod-card-icono">{modulo.icono}</span>
                 </div>
-              ) : (
-                <span className="tarjeta-modulo-progreso-texto">
-                  {modulo.tarjetas && modulo.tarjetas.length > 0
-                    ? `🃏 ${modulo.tarjetas.length} tarjetas de estudio`
-                    : 'Por comenzar'}
-                </span>
-              )}
-            </div>
-          ))}
+
+                <div className="mod-card-cuerpo">
+                  <h3 className="mod-card-titulo">{modulo.nombre}</h3>
+                  <p className="mod-card-descripcion">{modulo.descripcion}</p>
+
+                  <div className="mod-card-chips">
+                    {cantidadTarjetas > 0 && (
+                      <span className="mod-card-chip">🃏 {cantidadTarjetas} tarjetas</span>
+                    )}
+                    {quiz && (
+                      <span className="mod-card-chip">🎯 {quiz.correctas}/{quiz.total} acertadas</span>
+                    )}
+                  </div>
+
+                  <div className="mod-card-progreso">
+                    <div className="mod-card-barra">
+                      <div className="mod-card-barra-relleno" style={{ width: `${progreso}%` }}></div>
+                    </div>
+                    <span>{progreso > 0 ? `${progreso}% completado` : 'Por comenzar'}</span>
+                  </div>
+
+                  <span className="mod-card-boton">{etiquetaBoton}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
     </section>

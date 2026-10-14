@@ -135,3 +135,140 @@
   color: #9ca3af;
   font-size: 0.78rem;
 }
+
+.modulos-carrusel {
+  gap: 1.3rem;
+  padding: 0.7rem 0.3rem 1.4rem 0.3rem;
+}
+
+.mod-card {
+  --acento: #39ff88;
+  flex: 0 0 300px;
+  width: 300px;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--acento) 45%, transparent);
+  background-color: #111827;
+  overflow: hidden;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.mod-card:hover,
+.mod-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--acento);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--acento) 30%, transparent);
+  outline: none;
+}
+
+.mod-card-cabecera {
+  position: relative;
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 130%, color-mix(in srgb, var(--acento) 45%, transparent), transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--acento) 22%, #111827), #111827);
+}
+
+.mod-card-numero {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--acento);
+  background-color: rgba(5, 10, 7, 0.55);
+  border: 1px solid var(--acento);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.mod-card-icono {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--acento) 60%, transparent));
+}
+
+.mod-card-cuerpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 1.3rem 1.3rem 1.3rem;
+  gap: 0.75rem;
+}
+
+.mod-card-titulo {
+  color: #ffffff;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.mod-card-descripcion {
+  color: #9ca3af;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.mod-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.mod-card-chip {
+  background-color: color-mix(in srgb, var(--acento) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--acento) 35%, transparent);
+  color: #e5e7eb;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.mod-card-barra {
+  height: 8px;
+  background-color: #1f2937;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.mod-card-barra-relleno {
+  height: 100%;
+  background-color: var(--acento);
+  border-radius: 999px;
+  box-shadow: 0 0 10px var(--acento);
+}
+
+.mod-card-progreso span {
+  color: #9ca3af;
+  font-size: 0.76rem;
+}
+
+.mod-card-boton {
+  margin-top: 0.2rem;
+  text-align: center;
+  background-color: var(--acento);
+  color: #0a0e17;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.7rem;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .mod-card {
+    flex: 0 0 265px;
+    width: 265px;
+    min-height: 390px;
+  }
+}
