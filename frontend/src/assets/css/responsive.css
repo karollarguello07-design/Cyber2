@@ -1,0 +1,151 @@
+@media (max-width: 900px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    padding: 0.7rem 1rem;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .layout-cuerpo {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+    padding: 0.5rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .sidebar-titulo {
+    display: none;
+  }
+
+  .sidebar-link {
+    white-space: nowrap;
+    margin-bottom: 0;
+    padding: 0.5rem 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .layout-contenido {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-terminal {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  .layout-contenido {
+    padding: 0.8rem;
+  }
+
+  .hero {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .hero-titulo {
+    font-size: 1.6rem;
+  }
+
+  .hero-botones,
+  .hero-estadisticas {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .modulos-encabezado,
+  .panel-ataques-encabezado,
+  .simulacion-encabezado {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .simulacion-contenido {
+    flex-direction: column;
+  }
+
+  .simulacion-ilustracion,
+  .simulacion-pregunta {
+    min-width: 0;
+  }
+
+  .tarjeta-volteable {
+    height: 540px;
+  }
+
+  .tarjeta-icono-grande {
+    font-size: 3rem;
+  }
+
+  .tarjeta-frente h3 {
+    font-size: 1.25rem;
+  }
+
+  .tarjetas-controles {
+    justify-content: center;
+  }
+
+  .detalle-modulo-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quiz-modulo {
+    flex-wrap: wrap;
+  }
+
+  .quiz-final-datos {
+    gap: 1.2rem;
+  }
+
+  .login-contenedor,
+  .registro-contenedor {
+    padding: 1rem;
+  }
+
+  .login-formulario,
+  .registro-formulario {
+    padding: 1.5rem;
+  }
+
+  .ajustes-tarjeta,
+  .perfil-lateral {
+    max-width: 100%;
+  }
+
+  .ataques-reales-iframe-contenedor {
+    height: 75vh;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
