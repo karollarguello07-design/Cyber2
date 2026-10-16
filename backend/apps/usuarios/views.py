@@ -2,7 +2,7 @@ from rest_framework import generics, permissions
 from .models import Usuario
 from .serializers import UsuarioRegistroSerializer
 from .permissions import EsAdministrador
-from .serializers import UsuarioListaSerializer
+from .serializers import UsuarioListaSerializer, UsuarioAdminCrearSerializer, UsuarioAdminActualizarSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .telegram_service import generar_codigo_vinculacion, desvincular_telegram
@@ -52,3 +52,14 @@ class EstadoTelegramView(APIView):
         return Response({
             'vinculado': request.user.telegram_vinculado,
         })
+
+class UsuarioCrearView(generics.CreateAPIView):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioAdminCrearSerializer
+    permission_classes = [EsAdministrador]
+
+
+class UsuarioDetalleView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioAdminActualizarSerializer
+    permission_classes = [EsAdministrador]

@@ -135,3 +135,49 @@
 .navbar-toggle-tema:hover {
   border-color: var(--color-acento);
 }
+
+.sidebar-grupo {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-link-expandible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar-flecha {
+  font-size: 0.7rem;
+  color: var(--color-texto-apagado);
+}
+
+.sidebar-submenu {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.8rem;
+  border-left: 1px solid var(--color-borde);
+  padding-left: 0.6rem;
+}
+
+.sidebar-sublink {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem 0.4rem 1rem;
+  background-color: transparent !important;
+}
+
+.sidebar-sublink:hover {
+  background-color: transparent !important;
+  color: var(--color-texto);
+}
+
+.sidebar-sublink.activo {
+  background-color: transparent !important;
+  color: var(--color-acento);
+}

@@ -6,3 +6,7 @@ backend/__pycache__/
 **/__pycache__/
 *.pyc
 backend/staticfiles/
+.env
+venv/
+node_modules/
+__pycache__/

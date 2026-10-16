@@ -42,3 +42,38 @@ class UsuarioListaSerializer(serializers.ModelSerializer):
         model = Usuario
         fields = ('id', 'username', 'email', 'rol', 'is_active', 'date_joined')
 
+class UsuarioAdminCrearSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, min_length=8)
+
+    class Meta:
+        model = Usuario
+        fields = ('id', 'username', 'email', 'password', 'rol', 'is_active')
+
+    def create(self, validated_data):
+        usuario = Usuario(
+            username=validated_data['username'],
+            email=validated_data.get('email', ''),
+            rol=validated_data.get('rol', Usuario.Rol.ESTUDIANTE),
+            is_active=validated_data.get('is_active', True),
+        )
+        usuario.set_password(validated_data['password'])
+        usuario.save()
+        return usuario
+
+
+class UsuarioAdminActualizarSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, min_length=8, required=False, allow_blank=True)
+
+    class Meta:
+        model = Usuario
+        fields = ('id', 'username', 'email', 'rol', 'is_active', 'password')
+        read_only_fields = ('id',)
+
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+        for campo, valor in validated_data.items():
+            setattr(instance, campo, valor)
+        if password:
+            instance.set_password(password)
+        instance.save()
+        return instance

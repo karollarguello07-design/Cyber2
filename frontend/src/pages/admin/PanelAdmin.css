@@ -1,11 +1,11 @@
 .panel-admin h1 {
-  color: #ffffff;
+  color: var(--color-texto);
   font-size: 1.4rem;
   margin-bottom: 1.2rem;
 }
 
 .panel-admin-cargando {
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
   padding: 1rem;
 }
 
@@ -25,35 +25,35 @@
 }
 
 .resumen-tarjeta {
-  background-color: #111827;
-  border: 1px solid #1f2937;
+  background-color: var(--color-fondo-panel);
+  border: 1px solid var(--color-borde);
   border-radius: 12px;
   padding: 1.1rem;
   text-align: center;
 }
 
 .resumen-etiqueta {
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
   font-size: 0.8rem;
   margin-bottom: 0.4rem;
 }
 
 .resumen-valor {
-  color: #39ff88;
+  color: var(--color-acento);
   font-size: 1.6rem;
   font-weight: 700;
 }
 
 .panel-admin-seccion {
-  background-color: #111827;
-  border: 1px solid #1f2937;
+  background-color: var(--color-fondo-panel);
+  border: 1px solid var(--color-borde);
   border-radius: 12px;
   padding: 1.3rem;
   margin-bottom: 1.5rem;
 }
 
 .panel-admin-seccion h2 {
-  color: #ffffff;
+  color: var(--color-texto);
   font-size: 1rem;
   margin-bottom: 1rem;
 }
@@ -65,18 +65,18 @@
 
 .admin-tabla th {
   text-align: left;
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
   font-size: 0.78rem;
   text-transform: uppercase;
   padding: 0.5rem;
-  border-bottom: 1px solid #1f2937;
+  border-bottom: 1px solid var(--color-borde);
 }
 
 .admin-tabla td {
-  color: #d1d5db;
+  color: var(--color-texto);
   font-size: 0.85rem;
   padding: 0.6rem 0.5rem;
-  border-bottom: 1px solid #1f2937;
+  border-bottom: 1px solid var(--color-borde);
 }
 
 .rol-chip {
@@ -107,6 +107,7 @@
   gap: 16px;
   margin-top: 20px;
 }
+
 .tarjeta-acceso {
   background-color: rgba(34, 211, 238, 0.06);
   border: 1px solid rgba(34, 211, 238, 0.25);
@@ -118,6 +119,7 @@
   gap: 10px;
   cursor: pointer;
 }
+
 .tarjeta-acceso:hover {
   background-color: rgba(34, 211, 238, 0.14);
 }
@@ -125,22 +127,225 @@
   font-size: 2rem;
 }
 .tarjeta-acceso-texto {
-  color: #e2e8f0;
+  color: var(--color-texto);
   font-weight: 600;
-}
-.boton-panel-django {
-  background-color: rgba(250, 204, 21, 0.1);
-  border-color: rgba(250, 204, 21, 0.4);
-  color: #facc15;
 }
 .boton-gestion {
-  background-color: rgba(34, 211, 238, 0.1);
-  border: 1px solid rgba(34, 211, 238, 0.4);
-  color: #39ff88 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--color-borde);
   border-radius: 8px;
-  padding: 10px 16px;
-  font-weight: 600;
+  padding: 14px 16px;
   cursor: pointer;
+  gap: 10px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.boton-gestion:hover {
+  border-color: var(--color-acento);
+  background: var(--color-hover-fondo);
+}
+
+.boton-gestion-titulo {
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-borde);
+  color: var(--color-texto);
+}
+
+.boton-gestion-desc {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-texto-tenue);
+  line-height: 1.4;
+}
+
+.panel-admin-botones-gestion {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.boton-panel-django {
+  background: #2563EB;
+  border-color: #2563EB;
+  color: #F8FAFC;
+}
+.boton-panel-django:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+[data-tema="claro"] .boton-panel-django {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #BFDBFE;
+}
+[data-tema="claro"] .boton-panel-django:hover {
+  background: #DBEAFE;
+  border-color: #93C5FD;
+}
+
+.panel-admin-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.panel-admin-encabezado h1 {
+  margin-bottom: 0;
+}
+
+.boton-agregar {
+  width: auto;
+  background-color: #39ff88;
+  color: #0a0e17;
+  border-color: #39ff88;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+}
+
+.boton-agregar:hover {
+  background-color: #2fe077;
+  border-color: #2fe077;
+}
+
+.acciones-fila {
+  display: flex;
+  gap: 8px;
+}
+
+.boton-accion {
+  background: none;
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  border-radius: 6px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.boton-accion:hover {
+  border-color: var(--color-acento);
+  color: var(--color-acento);
+}
+
+.boton-eliminar:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-caja {
+  background-color: var(--color-fondo-panel);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  padding: 1.6rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.modal-caja h2 {
+  color: var(--color-texto);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.modal-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-formulario label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--color-texto-tenue);
+  font-size: 0.85rem;
+}
+
+.modal-formulario input,
+.modal-formulario select {
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  color: var(--color-texto);
   font-size: 0.9rem;
-  text-decoration: none;
+}
+
+.modal-checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.6rem !important;
+}
+
+.modal-checkbox input {
+  width: auto;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.modal-caja-ancha {
+  max-width: 640px;
+}
+
+.selector-buscador {
+  width: 100%;
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  color: var(--color-texto);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.selector-buscador:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+.selector-tabla-contenedor {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.selector-tabla-contenedor .admin-tabla th {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-fondo-panel);
+}
+
+.selector-tabla-contenedor .admin-tabla td,
+.selector-tabla-contenedor .admin-tabla th {
+  padding: 0.6rem 0.8rem;
+}
+
+.selector-sin-resultados {
+  text-align: center;
+  color: var(--color-texto-tenue);
+  padding: 1rem !important;
 }

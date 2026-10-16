@@ -5,7 +5,6 @@ import Login from './pages/auth/Login';
 import Registro from './pages/auth/Registro';
 import Dashboard from './pages/Dashboard';
 import CursosDisponibles from './pages/estudiante/CursosDisponibles';
-import MisCursos from './pages/estudiante/MisCursos';
 import Retos from './pages/estudiante/Retos';
 import MiProgreso from './pages/estudiante/MiProgreso';
 import RutaPorRol from './routes/RutaPorRol';
@@ -40,14 +39,6 @@ function App() {
             element={
               <RutaProtegida>
                 <CursosDisponibles />
-              </RutaProtegida>
-            }
-          />
-          <Route
-            path="/mis-cursos"
-            element={
-              <RutaProtegida>
-                <MisCursos />
               </RutaProtegida>
             }
           />

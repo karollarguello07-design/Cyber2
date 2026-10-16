@@ -1,11 +1,11 @@
 .ajustes-pagina h1 {
-  color: #ffffff;
+  color: var(--color-texto);
   font-size: 1.4rem;
   margin-bottom: 0.3rem;
 }
 
 .ajustes-subtitulo {
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
 }
@@ -19,28 +19,28 @@
 }
 
 .ajustes-tarjeta {
-  background-color: #111827;
-  border: 1px solid #1f2937;
+  background-color: var(--color-fondo-panel);
+  border: 1px solid var(--color-borde);
   border-radius: 12px;
   padding: 1.5rem;
   max-width: 480px;
 }
 
 .ajustes-tarjeta h2 {
-  color: #ffffff;
+  color: var(--color-texto);
   font-size: 1.05rem;
   margin-bottom: 0.8rem;
 }
 
 .ajustes-descripcion {
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
   font-size: 0.85rem;
   margin-bottom: 1.3rem;
   line-height: 1.5;
 }
 
 .ajustes-cargando {
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
 }
 
 .ajustes-vinculado {
@@ -71,8 +71,8 @@
 
 .ajustes-boton-secundario {
   background: none;
-  border: 1px solid #1f2937;
-  color: #e5e7eb;
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
   border-radius: 8px;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
@@ -86,15 +86,15 @@
 }
 
 .ajustes-codigo-caja {
-  background-color: #0a0e17;
-  border: 1px solid #1f2937;
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
   border-radius: 10px;
   padding: 1.2rem;
   text-align: center;
 }
 
 .ajustes-codigo-caja p {
-  color: #9ca3af;
+  color: var(--color-texto-tenue);
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
 }
@@ -110,4 +110,5 @@
 .ajustes-codigo-nota {
   font-size: 0.78rem;
   margin-bottom: 1rem !important;
+  color: var(--color-texto-tenue);
 }

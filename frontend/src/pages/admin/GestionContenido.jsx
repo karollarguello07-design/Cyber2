@@ -2,11 +2,31 @@ import Layout from '../../components/layout/Layout';
 import './PanelAdmin.css';
 
 const enlacesGestion = [
-  { texto: '🎯 Gestionar Tipos de Ataque', ruta: 'retos_puntuacion/tipoataque/' },
-  { texto: '📋 Gestionar Plantillas de Reto', ruta: 'retos_puntuacion/plantillareto/' },
-  { texto: '⚔️ Gestionar Retos', ruta: 'retos_puntuacion/reto/' },
-  { texto: '❓ Gestionar Preguntas Quiz', ruta: 'retos_puntuacion/preguntaquiz/' },
-  { texto: '🏅 Gestionar Insignias', ruta: 'retos_puntuacion/insignia/' },
+  {
+    texto: '🎯 Gestionar Tipos de Ataque',
+    descripcion: 'Crea y edita las categorías de ataques usadas en los retos.',
+    ruta: 'retos_puntuacion/tipoataque/',
+  },
+  {
+    texto: '📋 Gestionar Plantillas de Reto',
+    descripcion: 'Define las plantillas base que se usan para generar retos.',
+    ruta: 'retos_puntuacion/plantillareto/',
+  },
+  {
+    texto: '⚔️ Gestionar Retos',
+    descripcion: 'Crea, edita o elimina los retos disponibles para los estudiantes.',
+    ruta: 'retos_puntuacion/reto/',
+  },
+  {
+    texto: '❓ Gestionar Preguntas Quiz',
+    descripcion: 'Administra el banco de preguntas usado en los quiz.',
+    ruta: 'retos_puntuacion/preguntaquiz/',
+  },
+  {
+    texto: '🏅 Gestionar Insignias',
+    descripcion: 'Configura las insignias que los estudiantes pueden obtener.',
+    ruta: 'retos_puntuacion/insignia/',
+  },
 ];
 
 function construirUrlAdmin(rutaModelo) {
@@ -30,7 +50,8 @@ function GestionContenido() {
                 className="boton-gestion"
                 onClick={() => window.open(construirUrlAdmin(enlace.ruta), '_blank')}
               >
-                {enlace.texto}
+                <span className="boton-gestion-titulo">{enlace.texto}</span>
+                <span className="boton-gestion-desc">{enlace.descripcion}</span>
               </button>
             ))}
           </div>
@@ -50,3 +71,4 @@ function GestionContenido() {
 }
 
 export default GestionContenido;
+
