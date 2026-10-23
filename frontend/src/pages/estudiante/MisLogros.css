@@ -1,0 +1,173 @@
+.logros-pagina h1 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.logros-subtitulo {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  margin: 0 0 1.8rem 0;
+}
+
+.logros-cargando,
+.logros-vacio {
+  color: #9ca3af;
+}
+
+.logros-error {
+  background-color: #2a0e0e;
+  border: 1px solid #ff4d5e;
+  color: #ffc2c8;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.logros-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.logros-stat {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 1.3rem 1rem;
+  text-align: center;
+}
+
+.logros-stat-valor {
+  display: block;
+  color: #39ff88;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.logros-stat-etiqueta {
+  color: #9ca3af;
+  font-size: 0.82rem;
+}
+
+.logros-seccion {
+  margin-bottom: 2.5rem;
+}
+
+.logros-seccion h2 {
+  color: #ffffff;
+  font-size: 1.15rem;
+  margin: 0 0 1.2rem 0;
+}
+
+.logros-contador {
+  color: #39ff88;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.logros-insignias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.logros-insignia {
+  border-radius: 14px;
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+}
+
+.logros-insignia.obtenida {
+  background: linear-gradient(160deg, #0c2a1c 0%, #111827 70%);
+  border: 1px solid #39ff88;
+  box-shadow: 0 0 16px rgba(57, 255, 136, 0.25);
+}
+
+.logros-insignia.bloqueada {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  opacity: 0.65;
+}
+
+.logros-insignia-icono {
+  font-size: 2.6rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.logros-insignia h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 0 0 0.4rem 0;
+}
+
+.logros-insignia p {
+  color: #9ca3af;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.logros-insignia-fecha {
+  display: block;
+  color: #39ff88;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
+
+.logros-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.logros-timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+}
+
+.logros-timeline-icono {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.logros-timeline-cuerpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.logros-timeline-cuerpo strong {
+  color: #ffffff;
+  font-size: 0.92rem;
+}
+
+.logros-timeline-detalle {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.logros-timeline-fecha {
+  color: #6b7280;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .logros-timeline-item {
+    flex-wrap: wrap;
+  }
+
+  .logros-timeline-fecha {
+    width: 100%;
+    margin-left: 2.4rem;
+  }
+}

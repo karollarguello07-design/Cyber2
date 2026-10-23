@@ -32,6 +32,18 @@ class PlantillaReto(models.Model):
         default=1,
         help_text='Orden en que aparece el reto dentro de su nivel (1, 2, 3...)'
     )
+    class Dificultad(models.TextChoices):
+        RECONOCIMIENTO = 'reconocimiento', 'Nivel 1 · Reconocimiento'
+        DENTRO_SISTEMA = 'dentro_sistema', 'Nivel 2 · Dentro del sistema'
+        AVANZADO = 'avanzado', 'Nivel 3 · Avanzado'
+
+    nivel_dificultad = models.CharField(
+        max_length=20,
+        choices=Dificultad.choices,
+        default=Dificultad.RECONOCIMIENTO,
+        help_text='Nivel del camino de retos, del más fácil al más avanzado.'
+    )
+
     instrucciones_practica = models.TextField(
         blank=True,
         help_text='Pasos y comandos exactos que el estudiante debe ejecutar contra el Cowrie real'

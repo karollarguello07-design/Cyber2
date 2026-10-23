@@ -1,0 +1,104 @@
+import { useState, useEffect } from 'react';
+import Layout from '../../components/layout/Layout';
+import { obtenerRetos, responderReto } from '../../services/retos';
+import RetosIntro from './RetosIntro';
+import RetosCamino from './RetosCamino';
+import RetoDetalle from './RetoDetalle';
+import './Retos.css';
+
+function Retos() {
+  const [retos, setRetos] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState('');
+  const [retoActivo, setRetoActivo] = useState(null);
+  const [seleccionPorPregunta, setSeleccionPorPregunta] = useState({});
+  const [resultadoPorPregunta, setResultadoPorPregunta] = useState({});
+  const [enviando, setEnviando] = useState(false);
+  const [mostrarIntro, setMostrarIntro] = useState(true);
+
+  useEffect(() => {
+    cargarRetos();
+  }, []);
+
+  async function cargarRetos() {
+    setCargando(true);
+    setError('');
+    try {
+      const datos = await obtenerRetos();
+      setRetos(datos);
+    } catch (err) {
+      setError('No se pudieron cargar los retos.');
+    } finally {
+      setCargando(false);
+    }
+  }
+
+  function abrirReto(reto) {
+    setRetoActivo(reto);
+    setSeleccionPorPregunta({});
+    setResultadoPorPregunta({});
+  }
+
+  async function manejarSeleccion(pregunta, opcion) {
+    if (resultadoPorPregunta[pregunta.id]) return;
+
+    setSeleccionPorPregunta((prev) => ({ ...prev, [pregunta.id]: opcion.id }));
+    setEnviando(true);
+
+    try {
+      const resultado = await responderReto(retoActivo.id, opcion.id);
+      setResultadoPorPregunta((prev) => ({ ...prev, [pregunta.id]: resultado }));
+    } catch (err) {
+      setError('No se pudo registrar tu respuesta.');
+    } finally {
+      setEnviando(false);
+    }
+  }
+
+  if (mostrarIntro) {
+    return (
+      <Layout>
+        <RetosIntro onIniciar={() => setMostrarIntro(false)} />
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <div className="retos-pagina">
+        <h1>🗡️ Retos disponibles</h1>
+        <p className="retos-subtitulo">
+          Retos generados a partir de ataques reales capturados en tus cursos
+        </p>
+
+        {error && <div className="retos-error">{error}</div>}
+
+        {cargando ? (
+          <p className="retos-cargando">Cargando retos...</p>
+        ) : retos.length === 0 ? (
+          <p className="retos-cargando">
+            No hay retos disponibles todavía. Deben generarse a partir de ataques capturados en tus cursos.
+          </p>
+        ) : !retoActivo ? (
+          <>
+            <button className="retos-volver-intro" onClick={() => setMostrarIntro(true)}>
+              ← Volver
+            </button>
+            <RetosCamino retos={retos} onAbrir={abrirReto} />
+          </>
+        ) : (
+          <RetoDetalle
+            reto={retoActivo}
+            seleccionPorPregunta={seleccionPorPregunta}
+            resultadoPorPregunta={resultadoPorPregunta}
+            enviando={enviando}
+            onSeleccionar={manejarSeleccion}
+            onVolver={() => setRetoActivo(null)}
+          />
+        )}
+      </div>
+    </Layout>
+  );
+}
+
+export default Retos;

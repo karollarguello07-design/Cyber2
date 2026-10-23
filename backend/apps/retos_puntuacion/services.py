@@ -1,4 +1,5 @@
-from .models import PerfilEstudiante, Nivel, Insignia, UsuarioInsignia, IntentoReto
+from django.db.models import Count
+from .models import PerfilEstudiante, Nivel, Insignia, UsuarioInsignia, IntentoReto, Reto
 from apps.usuarios.telegram_service import notificar_usuario
 
 
@@ -8,7 +9,6 @@ def obtener_o_crear_perfil(usuario):
         perfil.nivel = Nivel.objects.order_by('numero_nivel').first()
         perfil.save()
     return perfil
-
 
 def registrar_intento(estudiante, reto, opcion_seleccionada):
     es_correcto = opcion_seleccionada.es_correcta
@@ -22,9 +22,20 @@ def registrar_intento(estudiante, reto, opcion_seleccionada):
         xp_otorgado=xp_otorgado,
     )
 
+    intento.subio_nivel = False
+    intento.nivel_nuevo = None
+
     if es_correcto:
+        perfil = obtener_o_crear_perfil(estudiante)
+        nivel_antes = perfil.nivel_id
+
         actualizar_xp_y_nivel(estudiante, xp_otorgado)
         evaluar_insignias(estudiante)
+
+        perfil.refresh_from_db()
+        if perfil.nivel_id != nivel_antes:
+            intento.subio_nivel = True
+            intento.nivel_nuevo = perfil.nivel.nombre_nivel
 
     return intento
 
@@ -45,6 +56,7 @@ def actualizar_xp_y_nivel(estudiante, xp_ganado):
     perfil.save()
 
     if nuevo_nivel and nivel_anterior != nuevo_nivel:
+        _otorgar_insignia_si_no_existe(estudiante, nuevo_nivel.nombre_nivel)
         notificar_usuario(
             estudiante,
             f' ¡Subiste de nivel! Ahora eres {nuevo_nivel.nombre_nivel} '
@@ -55,14 +67,31 @@ def actualizar_xp_y_nivel(estudiante, xp_ganado):
 
 
 def evaluar_insignias(estudiante):
-    total_correctos = IntentoReto.objects.filter(
-    estudiante=estudiante, es_correcto=True).count()
+    retos_correctos_ids = (
+        IntentoReto.objects.filter(estudiante=estudiante, es_correcto=True)
+        .values_list('reto_id', flat=True)
+        .distinct()
+    )
+    total_correctos = len(set(retos_correctos_ids))
 
     if total_correctos >= 1:
         _otorgar_insignia_si_no_existe(estudiante, 'Primer paso')
 
-    if total_correctos >= 5:
-        _otorgar_insignia_si_no_existe(estudiante, 'Guardián')
+    conteo_por_nivel = (
+        Reto.objects.filter(id__in=retos_correctos_ids)
+        .values('plantilla__nivel_dificultad')
+        .annotate(cantidad=Count('id'))
+    )
+    mapa = {fila['plantilla__nivel_dificultad']: fila['cantidad'] for fila in conteo_por_nivel}
+
+    if mapa.get('reconocimiento', 0) >= 3:
+        _otorgar_insignia_si_no_existe(estudiante, 'Rastreador')
+    if mapa.get('dentro_sistema', 0) >= 6:
+        _otorgar_insignia_si_no_existe(estudiante, 'Infiltrado')
+    if mapa.get('avanzado', 0) >= 4:
+        _otorgar_insignia_si_no_existe(estudiante, 'Estratega')
+    if total_correctos >= 13:
+        _otorgar_insignia_si_no_existe(estudiante, 'Maestro del Camino')
 
 
 def _otorgar_insignia_si_no_existe(estudiante, nombre_insignia):

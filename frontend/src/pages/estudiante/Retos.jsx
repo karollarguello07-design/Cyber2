@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Layout from '../../components/layout/Layout';
 import { obtenerRetos, responderReto } from '../../services/retos';
+import RetosIntro from './RetosIntro';
+import RetosCamino from './RetosCamino';
+import RetoDetalle from './RetoDetalle';
 import './Retos.css';
+
+const MAX_INTENTOS = 2;
 
 function Retos() {
   const [retos, setRetos] = useState([]);
@@ -10,7 +15,10 @@ function Retos() {
   const [retoActivo, setRetoActivo] = useState(null);
   const [seleccionPorPregunta, setSeleccionPorPregunta] = useState({});
   const [resultadoPorPregunta, setResultadoPorPregunta] = useState({});
+  const [intentosPorPregunta, setIntentosPorPregunta] = useState({});
   const [enviando, setEnviando] = useState(false);
+  const [mostrarIntro, setMostrarIntro] = useState(true);
+  const [subioDeNivel, setSubioDeNivel] = useState(null);
 
   useEffect(() => {
     cargarRetos();
@@ -33,22 +41,84 @@ function Retos() {
     setRetoActivo(reto);
     setSeleccionPorPregunta({});
     setResultadoPorPregunta({});
+    setIntentosPorPregunta({});
+  }
+
+  function repetirReto() {
+    abrirReto(retoActivo);
+  }
+
+  async function irAlSiguienteReto(retoActualId) {
+    const datos = await obtenerRetos();
+    setRetos(datos);
+
+    const actual = datos.find((r) => r.id === retoActualId);
+    const siguiente = actual ? datos.find((r) => r.orden === actual.orden + 1) : null;
+
+    if (siguiente) {
+      abrirReto(siguiente);
+    } else {
+      setRetoActivo(null);
+    }
   }
 
   async function manejarSeleccion(pregunta, opcion) {
-    if (resultadoPorPregunta[pregunta.id]) return;
+    if (resultadoPorPregunta[pregunta.id] || enviando) return;
 
     setSeleccionPorPregunta((prev) => ({ ...prev, [pregunta.id]: opcion.id }));
     setEnviando(true);
 
     try {
       const resultado = await responderReto(retoActivo.id, opcion.id);
-      setResultadoPorPregunta((prev) => ({ ...prev, [pregunta.id]: resultado }));
+
+      if (resultado.es_correcto) {
+        setResultadoPorPregunta((prev) => ({ ...prev, [pregunta.id]: resultado }));
+        if (resultado.subio_nivel) {
+          setSubioDeNivel(resultado.nivel_nuevo);
+        }
+      } else {
+        const intentosPrevios = intentosPorPregunta[pregunta.id] || 0;
+        const intentosActuales = intentosPrevios + 1;
+        setIntentosPorPregunta((prev) => ({ ...prev, [pregunta.id]: intentosActuales }));
+
+        if (intentosActuales >= MAX_INTENTOS) {
+          setResultadoPorPregunta((prev) => ({
+            ...prev,
+            [pregunta.id]: { ...resultado, agotado: true },
+          }));
+        } else {
+          setResultadoPorPregunta((prev) => ({
+            ...prev,
+            [pregunta.id]: { ...resultado, reintentar: true },
+          }));
+        }
+      }
     } catch (err) {
       setError('No se pudo registrar tu respuesta.');
     } finally {
       setEnviando(false);
     }
+  }
+
+  function manejarReintentar(preguntaId) {
+    setSeleccionPorPregunta((prev) => {
+      const copia = { ...prev };
+      delete copia[preguntaId];
+      return copia;
+    });
+    setResultadoPorPregunta((prev) => {
+      const copia = { ...prev };
+      delete copia[preguntaId];
+      return copia;
+    });
+  }
+
+  if (mostrarIntro) {
+    return (
+      <Layout>
+        <RetosIntro onIniciar={() => setMostrarIntro(false)} />
+      </Layout>
+    );
   }
 
   return (
@@ -68,85 +138,29 @@ function Retos() {
             No hay retos disponibles todavía. Deben generarse a partir de ataques capturados en tus cursos.
           </p>
         ) : !retoActivo ? (
-          <div className="retos-lista">
-            {retos.map((reto) => (
-              <div key={reto.id} className="reto-tarjeta" onClick={() => abrirReto(reto)}>
-                <h3>{reto.titulo}</h3>
-                <p>{reto.descripcion}</p>
-                <div className="reto-meta">
-                  <span>{reto.curso_nombre}</span>
-                  <span className="reto-xp">+{reto.xp_recompensa} XP</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="reto-detalle">
-            <button className="reto-volver" onClick={() => setRetoActivo(null)}>
-              ← Volver a la lista
+          <>
+            <button className="retos-volver-intro" onClick={() => setMostrarIntro(true)}>
+              ← Volver
             </button>
-
-	              <h2>{retoActivo.titulo}</h2>
-            <p className="reto-detalle-descripcion">{retoActivo.descripcion}</p>
-
-            {retoActivo.instrucciones_practica && (
-              <div className="reto-practica">
-                <h3>🧪 Practica tú mismo</h3>
-                {retoActivo.credenciales_practica && (
-                  <p className="reto-practica-credenciales">
-                    <strong>Credenciales:</strong> {retoActivo.credenciales_practica}
-                  </p>
-                )}
-                <pre className="reto-practica-instrucciones">
-                  {retoActivo.instrucciones_practica}
-                </pre>
-                <p className="reto-practica-nota">
-                  Después de ejecutar el ataque, ve al Panel Cowrie y da clic en "Actualizar"
-                  para ver tu intento reflejado en "Últimos intentos de acceso".
-                </p>
-              </div>
-            )}
-
-            {retoActivo.preguntas.map((pregunta) => {
-
-
-              const resultado = resultadoPorPregunta[pregunta.id];
-              const seleccion = seleccionPorPregunta[pregunta.id];
-
-              return (
-                <div key={pregunta.id} className="pregunta-bloque">
-                  <h3>{pregunta.enunciado}</h3>
-                  <div className="pregunta-opciones">
-                    {pregunta.opciones.map((opcion) => {
-                      let clase = 'pregunta-opcion';
-                      if (resultado) {
-                        if (opcion.id === seleccion) {
-                          clase += resultado.es_correcto ? ' correcta' : ' incorrecta';
-                        }
-                      }
-                      return (
-                        <button
-                          key={opcion.id}
-                          className={clase}
-                          disabled={!!resultado || enviando}
-                          onClick={() => manejarSeleccion(pregunta, opcion)}
-                        >
-                          {opcion.texto_opcion}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  {resultado && (
-                    <p className={resultado.es_correcto ? 'pregunta-feedback-ok' : 'pregunta-feedback-error'}>
-                      {resultado.es_correcto
-                        ? `¡Correcto! Ganaste ${resultado.xp_otorgado} XP.`
-                        : 'Respuesta incorrecta. No ganaste XP esta vez.'}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+            <RetosCamino retos={retos} onAbrir={abrirReto} />
+          </>
+        ) : (
+          <RetoDetalle
+            key={retoActivo.id}
+            reto={retoActivo}
+            seleccionPorPregunta={seleccionPorPregunta}
+            resultadoPorPregunta={resultadoPorPregunta}
+            intentosPorPregunta={intentosPorPregunta}
+            maxIntentos={MAX_INTENTOS}
+            enviando={enviando}
+            onSeleccionar={manejarSeleccion}
+            onReintentar={manejarReintentar}
+            onRepetirReto={repetirReto}
+            onVolver={() => setRetoActivo(null)}
+            onSiguiente={() => irAlSiguienteReto(retoActivo.id)}
+            nivelNuevo={subioDeNivel}
+            onCerrarNivelNuevo={() => setSubioDeNivel(null)}
+          />
         )}
       </div>
     </Layout>

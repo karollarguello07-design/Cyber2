@@ -18,6 +18,7 @@ import GestionUsuarios from './pages/admin/GestionUsuarios';
 import GestionContenido from './pages/admin/GestionContenido';
 import Reportes from './pages/admin/Reportes';
 import Quiz from './pages/estudiante/Quiz';
+import MisLogros from './pages/estudiante/MisLogros';
 
 function App() {
   return (
@@ -137,6 +138,14 @@ function App() {
             element={
               <RutaProtegida>
                 <Quiz />
+              </RutaProtegida>
+            }
+          />
+          <Route
+            path="/logros"
+            element={
+              <RutaProtegida>
+                <MisLogros />
               </RutaProtegida>
             }
           />

@@ -1,0 +1,156 @@
+.camino {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.camino-progreso {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.camino-progreso-barra {
+  height: 10px;
+  background-color: #1f2937;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.camino-progreso-relleno {
+  height: 100%;
+  background-color: #39ff88;
+  box-shadow: 0 0 10px #39ff88;
+  transition: width 0.3s;
+}
+
+.camino-progreso span {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.camino-nivel {
+  margin-bottom: 2.5rem;
+}
+
+.camino-nivel-titulo {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.camino-senda {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: relative;
+}
+
+.camino-senda::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #1f2937;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.camino-fila {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.camino-izquierda {
+  justify-content: flex-start;
+}
+
+.camino-derecha {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+.camino-nodo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camino-nodo-bloqueado {
+  background-color: #1f2937;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.camino-nodo-disponible {
+  background-color: var(--nivel-color, #39ff88);
+  color: #0a0e17;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--nivel-color, #39ff88) 20%, transparent);
+  animation: camino-pulso 1.6s infinite;
+}
+
+.camino-nodo-completado {
+  background-color: #0c2a1c;
+  color: #5dff7a;
+  border: 2px solid #5dff7a;
+}
+
+@keyframes camino-pulso {
+  0%, 100% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--nivel-color, #39ff88) 20%, transparent); }
+  50% { box-shadow: 0 0 0 11px color-mix(in srgb, var(--nivel-color, #39ff88) 10%, transparent); }
+}
+
+.camino-info {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  max-width: 260px;
+}
+
+.camino-info h3 {
+  color: #e5e7eb;
+  font-size: 0.92rem;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.3;
+}
+
+.camino-xp {
+  color: #39ff88;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .camino-izquierda,
+  .camino-derecha {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .camino-senda::before {
+    left: 32px;
+  }
+
+  .camino-nodo {
+    width: 54px;
+    height: 54px;
+    font-size: 1.3rem;
+  }
+
+  .camino-info {
+    max-width: none;
+    flex: 1;
+  }
+}

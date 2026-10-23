@@ -20,17 +20,23 @@ class RetoSerializer(serializers.ModelSerializer):
     titulo = serializers.CharField(source='plantilla.titulo', read_only=True)
     descripcion = serializers.CharField(source='plantilla.descripcion', read_only=True)
     xp_recompensa = serializers.IntegerField(source='plantilla.xp_recompensa', read_only=True)
+    completado = serializers.SerializerMethodField()
     orden = serializers.IntegerField(source='plantilla.orden', read_only=True)
+    nivel_dificultad = serializers.CharField(source='plantilla.nivel_dificultad', read_only=True)
     instrucciones_practica = serializers.CharField(source='plantilla.instrucciones_practica', read_only=True)
     credenciales_practica = serializers.CharField(source='plantilla.credenciales_practica', read_only=True)
     curso_nombre = serializers.CharField(source='curso.nombre', read_only=True)
     preguntas = PreguntaQuizSerializer(many=True, read_only=True)
 
+    def get_completado(self, obj):
+        usuario = self.context['request'].user
+        return obj.intentos.filter(estudiante=usuario, es_correcto=True).exists()
+
     class Meta:
         model = Reto
         fields = (
-            'id', 'titulo', 'descripcion', 'xp_recompensa', 'orden',
-            'instrucciones_practica', 'credenciales_practica',
+            'id', 'titulo', 'descripcion', 'xp_recompensa', 'orden', 'nivel_dificultad',
+            'instrucciones_practica', 'credenciales_practica','completado',
             'curso', 'curso_nombre', 'activo', 'preguntas',
         )
 
