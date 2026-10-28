@@ -63,3 +63,15 @@ class UsuarioDetalleView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioAdminActualizarSerializer
     permission_classes = [EsAdministrador]
+
+
+from .serializers import MiCuentaSerializer
+
+
+class MiCuentaView(generics.RetrieveUpdateAPIView):
+    serializer_class = MiCuentaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+

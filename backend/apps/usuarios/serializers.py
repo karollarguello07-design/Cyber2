@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Usuario
-
+import re
 
 class UsuarioRegistroSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
@@ -77,3 +77,41 @@ class UsuarioAdminActualizarSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+import re
+
+
+class MiCuentaSerializer(serializers.ModelSerializer):
+    nombre_real = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Usuario
+        fields = ('username', 'nombre_real', 'alias', 'visible_en_ranking')
+        read_only_fields = ('username', 'nombre_real')
+
+    def get_nombre_real(self, obj):
+        return f'{obj.first_name} {obj.last_name}'.strip()
+
+    def validate_alias(self, valor):
+        valor = valor.strip()
+
+        if len(valor) < 3 or len(valor) > 20:
+            raise serializers.ValidationError('El alias debe tener entre 3 y 20 caracteres.')
+
+        if not re.match(r'^[A-Za-z0-9-]+$', valor):
+            raise serializers.ValidationError('El alias solo puede tener letras, números y guiones.')
+
+        usuario = self.instance
+
+        if valor.lower() == usuario.username.lower():
+            raise serializers.ValidationError('El alias no puede ser igual a tu nombre de usuario.')
+
+        nombre_real = f'{usuario.first_name} {usuario.last_name}'.strip()
+        if nombre_real and valor.lower() == nombre_real.lower():
+            raise serializers.ValidationError('El alias no puede ser igual a tu nombre real.')
+
+        if Usuario.objects.filter(alias__iexact=valor).exclude(pk=usuario.pk).exists():
+            raise serializers.ValidationError('Ese alias ya está en uso. Elige otro.')
+
+        return valor

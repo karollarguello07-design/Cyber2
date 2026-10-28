@@ -1,0 +1,221 @@
+.ranking-pagina h1 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.ranking-subtitulo {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin: 0 0 1.8rem 0;
+}
+
+.ranking-cargando,
+.ranking-vacio {
+  color: #9ca3af;
+}
+
+.ranking-error {
+  background-color: #2a0e0e;
+  border: 1px solid #ff4d5e;
+  color: #ffc2c8;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.ranking-mi-posicion {
+  background: linear-gradient(160deg, #0c2a1c 0%, #111827 70%);
+  border: 1px solid #39ff88;
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ranking-mi-posicion-etiqueta {
+  color: #39ff88;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ranking-mi-posicion-cuerpo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.ranking-mi-posicion-puesto {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #39ff88;
+}
+
+.ranking-mi-posicion-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ranking-mi-posicion-info strong {
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+.ranking-mi-posicion-info span {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+.ranking-mi-posicion-total {
+  color: #6b7280;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.ranking-podio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.ranking-podio-puesto {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 1.3rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ranking-podio-puesto-1 {
+  border-color: #ffd23f;
+  padding-top: 1.8rem;
+  box-shadow: 0 0 20px rgba(255, 210, 63, 0.2);
+  order: 2;
+}
+
+.ranking-podio-puesto-2 {
+  order: 1;
+}
+
+.ranking-podio-puesto-3 {
+  order: 3;
+}
+
+.ranking-podio-medalla {
+  font-size: 2.2rem;
+}
+
+.ranking-podio-alias {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ranking-podio-nivel {
+  color: #39ff88;
+  font-size: 0.78rem;
+}
+
+.ranking-podio-xp {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ranking-podio-insignias {
+  color: #6b7280;
+  font-size: 0.78rem;
+}
+
+.ranking-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.ranking-lista-fila {
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto 70px;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+}
+
+.ranking-lista-puesto {
+  color: #6b7280;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.ranking-lista-alias {
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ranking-lista-nivel {
+  color: #39ff88;
+  font-size: 0.78rem;
+}
+
+.ranking-lista-insignias {
+  color: #9ca3af;
+  font-size: 0.78rem;
+}
+
+.ranking-lista-xp {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.ranking-fila-propia {
+  border-color: #39ff88 !important;
+  box-shadow: 0 0 14px rgba(57, 255, 136, 0.25);
+}
+
+.ranking-nota {
+  color: #6b7280;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.ranking-nota strong {
+  color: #9ca3af;
+}
+
+@media (max-width: 600px) {
+  .ranking-podio {
+    grid-template-columns: 1fr;
+  }
+
+  .ranking-podio-puesto-1,
+  .ranking-podio-puesto-2,
+  .ranking-podio-puesto-3 {
+    order: 0;
+    padding-top: 1.3rem;
+  }
+
+  .ranking-lista-fila {
+    grid-template-columns: 30px 1fr auto;
+    row-gap: 0.3rem;
+  }
+
+  .ranking-lista-nivel,
+  .ranking-lista-insignias {
+    display: none;
+  }
+}

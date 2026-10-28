@@ -3,11 +3,13 @@ from .views import (
     UsuariosListaView, GenerarCodigoTelegramView,
     DesvincularTelegramView, EstadoTelegramView,
     UsuarioCrearView, UsuarioDetalleView,
+    MiCuentaView,
 )
 
 urlpatterns = [
     path('usuarios/', UsuariosListaView.as_view(), name='usuarios_lista'),
     path('usuarios/crear/', UsuarioCrearView.as_view(), name='usuarios_crear'),
+    path('usuarios/mi-cuenta/', MiCuentaView.as_view(), name='mi_cuenta'),
     path('usuarios/<int:pk>/', UsuarioDetalleView.as_view(), name='usuarios_detalle'),
     path('telegram/generar-codigo/', GenerarCodigoTelegramView.as_view(), name='telegram_generar_codigo'),
     path('telegram/desvincular/', DesvincularTelegramView.as_view(), name='telegram_desvincular'),

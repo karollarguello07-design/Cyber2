@@ -9,11 +9,13 @@ const itemsMenuEstudiante = [
   { texto: 'Retos', ruta: '/retos' },
   { texto: 'Ataques Reales', ruta: '/ataques' },
   { texto: 'Cuestionarios', ruta: '/quiz' },
+  { texto: 'Ranking', ruta: '/ranking' },
 ];
 
 const itemsHerramientasEstudiante = [
   { texto: 'Mi Progreso', ruta: '/progreso' },
   { texto: 'Logros', ruta: '/logros' },
+  { texto: '¿Cómo funciona?', ruta: '/como-funciona' },
   { texto: 'Notificaciones', ruta: '/ajustes' },
 ];
 

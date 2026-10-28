@@ -1,0 +1,193 @@
+.como-funciona-pagina h1 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.como-funciona-subtitulo {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin: 0 0 2rem 0;
+}
+
+.como-funciona-cargando {
+  color: #9ca3af;
+}
+
+.como-funciona-error {
+  background-color: #2a0e0e;
+  border: 1px solid #ff4d5e;
+  color: #ffc2c8;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.como-funciona-seccion {
+  margin-bottom: 2.5rem;
+}
+
+.como-funciona-seccion h2 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+}
+
+.como-funciona-texto {
+  color: #c4ddcd;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.como-funciona-texto strong {
+  color: #39ff88;
+}
+
+.como-funciona-nota {
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.como-funciona-xp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.como-funciona-xp-tarjeta {
+  background-color: #111827;
+  border: 1px solid #39ff88;
+  border-radius: 14px;
+  padding: 1.3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.como-funciona-xp-icono {
+  font-size: 2rem;
+}
+
+.como-funciona-xp-tarjeta strong {
+  color: #39ff88;
+  font-size: 1.4rem;
+}
+
+.como-funciona-xp-tarjeta span {
+  color: #9ca3af;
+  font-size: 0.82rem;
+}
+
+.como-funciona-niveles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.como-funciona-nivel-fila {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.7rem 1.1rem;
+}
+
+.como-funciona-nivel-numero {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #39ff88;
+  color: #0a0e17;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.como-funciona-nivel-nombre {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.como-funciona-nivel-rango {
+  color: #9ca3af;
+  font-size: 0.82rem;
+}
+
+.como-funciona-insignias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.como-funciona-insignia {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.como-funciona-insignia-icono {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.como-funciona-insignia h3 {
+  color: #ffffff;
+  font-size: 0.92rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.como-funciona-insignia p {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.como-funciona-grupos {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.como-funciona-grupo {
+  flex: 1;
+  min-width: 160px;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.como-funciona-grupo strong {
+  color: #ffffff;
+  font-size: 0.88rem;
+}
+
+.como-funciona-grupo span {
+  color: #39ff88;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .como-funciona-nivel-fila {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  .como-funciona-nivel-rango {
+    grid-column: 2;
+  }
+}
