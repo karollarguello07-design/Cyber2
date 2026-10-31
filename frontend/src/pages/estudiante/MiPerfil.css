@@ -1,0 +1,172 @@
+.miperfil-pagina {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.miperfil-pagina h1 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.miperfil-cargando {
+  color: #9ca3af;
+}
+
+.miperfil-tarjeta-presentacion {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: linear-gradient(135deg, #0c2a1c 0%, #111827 65%);
+  border: 1px solid #39ff88;
+  border-radius: 16px;
+  padding: 1.3rem 1.6rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.miperfil-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #39ff88;
+  color: #0a0e17;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.miperfil-presentacion-datos {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.miperfil-presentacion-datos strong {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.miperfil-presentacion-datos span {
+  color: #39ff88;
+  font-size: 0.82rem;
+}
+
+.miperfil-presentacion-stats {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.miperfil-presentacion-stats > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.miperfil-stat-valor {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.miperfil-stat-etiqueta {
+  color: #9ca3af;
+  font-size: 0.72rem;
+}
+
+.miperfil-tarjeta {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.miperfil-tarjeta h2 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 0 0 1.2rem 0;
+}
+
+.miperfil-error {
+  background-color: #2a0e0e;
+  border: 1px solid #ff4d5e;
+  color: #ffc2c8;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.miperfil-exito {
+  background-color: #0c2a1c;
+  border: 1px solid #39ff88;
+  color: #b8ffd0;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.miperfil-fila {
+  display: flex;
+  gap: 1rem;
+}
+
+.miperfil-fila .miperfil-campo {
+  flex: 1;
+}
+
+.miperfil-campo {
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.miperfil-campo label {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.miperfil-campo input {
+  background-color: #0a0e17;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  color: #e5e7eb;
+  font-size: 0.92rem;
+}
+
+.miperfil-campo input:focus {
+  outline: none;
+  border-color: #39ff88;
+}
+
+.miperfil-campo input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.miperfil-tarjeta button {
+  background-color: #39ff88;
+  color: #0a0e17;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .miperfil-fila {
+    flex-direction: column;
+  }
+
+  .miperfil-tarjeta-presentacion {
+    flex-direction: column;
+    text-align: center;
+  }
+}

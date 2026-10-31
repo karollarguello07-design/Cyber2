@@ -1,7 +1,9 @@
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar({ tema, alternarTema }) {
   const { usuario, logout } = useAuth();
+  const navigate = useNavigate();
 
   const inicialUsuario = usuario?.username?.charAt(0).toUpperCase() || '?';
 
@@ -24,9 +26,12 @@ function Navbar({ tema, alternarTema }) {
         >
           {tema === 'oscuro' ? '☀️' : '🌙'}
         </button>
-        <div className="navbar-avatar" title={usuario?.username}>
-          {inicialUsuario}
-        </div>
+
+        <button className="navbar-mi-perfil" onClick={() => navigate('/mi-perfil')}>
+          <span className="navbar-avatar">{inicialUsuario}</span>
+          Mi Perfil
+        </button>
+
         <button className="navbar-logout" onClick={logout}>
           Salir
         </button>

@@ -23,6 +23,7 @@ import Quiz from './pages/estudiante/Quiz';
 import MisLogros from './pages/estudiante/MisLogros';
 import Ranking from './pages/estudiante/Ranking';
 import ComoFunciona from './pages/estudiante/ComoFunciona';
+import MiPerfil from './pages/estudiante/MiPerfil';
 
 function App() {
   return (
@@ -168,6 +169,14 @@ function App() {
             element={
               <RutaProtegida>
                 <ComoFunciona />
+              </RutaProtegida>
+            }
+          />
+          <Route
+            path="/mi-perfil"
+            element={
+              <RutaProtegida>
+                <MiPerfil />
               </RutaProtegida>
             }
           />

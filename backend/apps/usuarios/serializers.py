@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Usuario
 import re
 
+
 class UsuarioRegistroSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
 
@@ -26,6 +27,7 @@ class UsuarioRegistroSerializer(serializers.ModelSerializer):
         usuario.save()
         return usuario
 
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
@@ -37,10 +39,12 @@ class TokenObtainPairConRolSerializer(TokenObtainPairSerializer):
         token['username'] = usuario.username
         return token
 
+
 class UsuarioListaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = ('id', 'username', 'email', 'rol', 'is_active', 'date_joined')
+
 
 class UsuarioAdminCrearSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8)
@@ -79,19 +83,25 @@ class UsuarioAdminActualizarSerializer(serializers.ModelSerializer):
         return instance
 
 
-import re
-
-
 class MiCuentaSerializer(serializers.ModelSerializer):
     nombre_real = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Usuario
-        fields = ('username', 'nombre_real', 'alias', 'visible_en_ranking')
-        read_only_fields = ('username', 'nombre_real')
+        fields = (
+            'username', 'nombre_real', 'first_name', 'last_name', 'email',
+            'rol', 'alias', 'visible_en_ranking',
+        )
+        read_only_fields = ('username', 'nombre_real', 'rol')
 
     def get_nombre_real(self, obj):
         return f'{obj.first_name} {obj.last_name}'.strip()
+
+    def validate_email(self, valor):
+        valor = valor.strip()
+        if valor and Usuario.objects.filter(email__iexact=valor).exclude(pk=self.instance.pk).exists():
+            raise serializers.ValidationError('Ese correo ya está en uso por otra cuenta.')
+        return valor
 
     def validate_alias(self, valor):
         valor = valor.strip()
