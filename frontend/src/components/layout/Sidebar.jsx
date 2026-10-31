@@ -5,7 +5,6 @@ import { useAuth } from '../../context/AuthContext';
 const itemsMenuEstudiante = [
   { texto: 'Inicio', ruta: '/dashboard' },
   { texto: 'Cursos Disponibles', ruta: '/cursos-disponibles' },
-  { texto: 'Mis Cursos', ruta: '/mis-cursos' },
   { texto: 'Retos', ruta: '/retos' },
   { texto: 'Ataques Reales', ruta: '/ataques' },
   { texto: 'Cuestionarios', ruta: '/quiz' },
