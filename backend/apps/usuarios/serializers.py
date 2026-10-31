@@ -115,3 +115,13 @@ class MiCuentaSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Ese alias ya está en uso. Elige otro.')
 
         return valor
+
+
+class SolicitarResetSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
+class RestablecerContrasenaSerializer(serializers.Serializer):
+    uid = serializers.CharField()
+    token = serializers.CharField()
+    nueva_contrasena = serializers.CharField(min_length=8)

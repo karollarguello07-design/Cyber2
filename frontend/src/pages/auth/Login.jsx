@@ -71,6 +71,9 @@ function Login() {
          <p className="login-link">
           ¿No tienes cuenta? <Link to="/registro">Regístrate</Link>
         </p>
+        <p className="login-link">
+          <Link to="/olvide-contrasena">¿Olvidaste tu contraseña?</Link>
+        </p>
       </form>
     </div>
   );

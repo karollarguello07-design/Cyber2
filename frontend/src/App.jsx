@@ -3,6 +3,8 @@ import { AuthProvider } from './context/AuthContext';
 import RutaProtegida from './routes/RutaProtegida';
 import Login from './pages/auth/Login';
 import Registro from './pages/auth/Registro';
+import OlvideContrasena from './pages/auth/OlvideContrasena';
+import RestablecerContrasena from './pages/auth/RestablecerContrasena';
 import Dashboard from './pages/Dashboard';
 import CursosDisponibles from './pages/estudiante/CursosDisponibles';
 import Retos from './pages/estudiante/Retos';
@@ -29,6 +31,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/olvide-contrasena" element={<OlvideContrasena />} />
+          <Route path="/restablecer-contrasena" element={<RestablecerContrasena />} />
           <Route
             path="/dashboard"
             element={

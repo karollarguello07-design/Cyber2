@@ -6,6 +6,12 @@ from .serializers import UsuarioListaSerializer, UsuarioAdminCrearSerializer, Us
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .telegram_service import generar_codigo_vinculacion, desvincular_telegram
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.core.mail import send_mail
+from django.conf import settings
+from .serializers import SolicitarResetSerializer, RestablecerContrasenaSerializer
 
 
 class RegistroUsuarioView(generics.CreateAPIView):
@@ -75,3 +81,63 @@ class MiCuentaView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
 
+
+class SolicitarResetView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = SolicitarResetSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.validated_data['email']
+
+        usuario = Usuario.objects.filter(email__iexact=email).exclude(email='').first()
+
+        if usuario:
+            uid = urlsafe_base64_encode(force_bytes(usuario.pk))
+            token = default_token_generator.make_token(usuario)
+            enlace = f'{settings.FRONTEND_URL}/restablecer-contrasena?uid={uid}&token={token}'
+
+            send_mail(
+                'Restablece tu contraseña — CyberEdu',
+                (
+                    f'Hola {usuario.username},\n\n'
+                    'Recibimos una solicitud para restablecer tu contraseña en CyberEdu.\n\n'
+                    f'Haz clic en este enlace para crear una nueva contraseña:\n{enlace}\n\n'
+                    'Si tú no pediste este cambio, puedes ignorar este correo.\n\n'
+                    'Este enlace deja de funcionar en cuanto se use una vez, o si cambias tu '
+                    'contraseña por otro medio.'
+                ),
+                settings.DEFAULT_FROM_EMAIL,
+                [usuario.email],
+                fail_silently=False,
+            )
+
+        return Response({
+            'mensaje': 'Si ese correo está registrado, te enviamos un enlace para restablecer tu contraseña.'
+        })
+
+
+class RestablecerContrasenaView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = RestablecerContrasenaSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        datos = serializer.validated_data
+
+        try:
+            uid = force_str(urlsafe_base64_decode(datos['uid']))
+            usuario = Usuario.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, Usuario.DoesNotExist):
+            usuario = None
+
+        if usuario is None or not default_token_generator.check_token(usuario, datos['token']):
+            return Response(
+                {'error': 'El enlace no es válido o ya expiró. Solicita uno nuevo.'},
+                status=400,
+            )
+
+        usuario.set_password(datos['nueva_contrasena'])
+        usuario.save()
+
+        return Response({'mensaje': 'Tu contraseña fue actualizada correctamente. Ya puedes iniciar sesión.'})
